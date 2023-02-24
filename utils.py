@@ -1,6 +1,6 @@
 from prettytable import PrettyTable
 
-def convert_to_json(output_list, src_list=None, ref_list=None, context_list=None, \
+def convert_to_json(output_list, src_list=None, ref_list=None, id_list=None, context_list=None, \
             scores=None, doc_id=None, system_id=None):
     """
         Convert the data into the json format.
@@ -25,6 +25,8 @@ def convert_to_json(output_list, src_list=None, ref_list=None, context_list=None
             cur['source'] = src_list[i]
         if ref_list is not None:
             cur['reference'] = ref_list[i]
+        if id_list is not None:
+            cur['id'] = id_list[i]
         if context_list is not None:
             cur['context'] = context_list[i]
         if scores is not None:
