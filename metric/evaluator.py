@@ -28,7 +28,7 @@ class SumEvaluator:
             print_result: whether to print the average score of each dimension on the screen
         """
         n_data = len(data)
-        eval_scores = [{} for _ in range(n_data)]
+        eval_scores = [{'id':data[i]['id']} for i in range(n_data)]
 
         if dims == None:
             eval_dims = self.dimensions
@@ -84,7 +84,7 @@ class SumEvaluator:
         # Customize your overall score here.
         if overall == True:
             for i in range(n_data):
-                eval_scores[i]['overall'] = np.mean(list(eval_scores[i].values()))
+                eval_scores[i]['overall'] = np.mean([eval_scores[i][key] for key in ['coherence','consistency','fluency','relevance']])
 
         if print_result == True:
             print_scores(eval_scores)
